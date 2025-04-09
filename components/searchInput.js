@@ -5,8 +5,8 @@ import React from 'react'
 import { StyleSheet } from 'react-native';
 
 
-const SearchInput = () => {
-  const [input, setInput] = useState('');
+const SearchInput = ({input, setInput, handleBtnClick}) => {
+    
 
     return (
         <View style={styles.searchGroup}>
@@ -16,7 +16,7 @@ const SearchInput = () => {
                 placeholder='search here..'
                 onChangeText={setInput}
             />
-            <TouchableOpacity style={styles.searchBtn}>
+            <TouchableOpacity style={styles.searchBtn} onPress={handleBtnClick}>
                 <Text style={styles.searchText}>Search</Text>
             </TouchableOpacity>
         </View>
