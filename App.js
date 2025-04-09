@@ -1,8 +1,7 @@
 import { View, Text } from 'react-native';
-import React from 'react';
 import { ImageBackground } from 'react-native';
 import { StyleSheet, Dimensions } from 'react-native';
-import { TextInput, TouchableOpacity} from 'react-native';
+import SearchInput from './components/searchInput';
 
 
 const { width, height } = Dimensions.get('window');
@@ -18,20 +17,18 @@ const App = () => {
         },
       ]}>
       <ImageBackground
-        style={[styles.headerBG, styles.searchGroup]}
+        style={styles.headerBG}
         source={{ uri: 'https://tinyurl.com/4srt76z9' }}
         resizeMode='cover'
       >
-        <TextInput
-          placeholder='serach here..'
-        />
-         <TouchableOpacity style={styles.searchBtn}>
-          <Text style={styles}>Search</Text>
-         </TouchableOpacity>
+        <View style={styles.overlay}>
+          <Text style={styles.title}>Welcome to FoodVista!</Text>
+          <Text style={styles.subtitle}>Enjoy Premium Foods</Text>
+          <SearchInput />
+        </View>
       </ImageBackground>
 
       <View style={{ flex: 2, backgroundColor: 'darkorange' }} />
-      <View style={{ flex: 3, backgroundColor: 'green' }} />
     </View>
   );
 };
@@ -47,21 +44,25 @@ const styles = StyleSheet.create({
   headerBG: {
     width: width,
     height: height * 0.3,
+    justifyContent: 'center'
   },
-  searchGroup: {
-    display: 'flex',
-    flexDirection:'row',
-    justifyContent:'space-around'
+  title: {
+    color: 'white',
+    fontSize: 24,
+    fontWeight:'bold',
+    textAlign:'center'
   },
-  searchBtn: {
-    backgroundColor: 'black',
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    borderRadius: 5,
-    alignSelf:'center'
+  subtitle:{
+    color:'#e3e3e3',
+    fontSize: 18,
+    textAlign:'center',
+    paddingBottom: 50
   },
-  searchText: {
-    color: 'white !important',
-    fontWeight: 'bold',
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    alignContent:'center',
+    justifyContent:'center',
+    backgroundColor: 'rgba(0,0,0,0.3)',
+    padding:20
   },
 })
